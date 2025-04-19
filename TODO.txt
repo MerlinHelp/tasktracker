@@ -1,0 +1,16 @@
+1. Command Line Arguments
+2. Add tasks
+3. Update tasks
+4. Delete tasks
+5. status
+    * todo/in-progress/done
+6. List tasks
+7. List done tasks
+8. List not done tasks
+9. List in progress tasks
+10. Implement JSON w/ following prop:
+    * id
+    * description
+    * status
+    * createdAt
+    * updatedAt
