@@ -1,16 +1,29 @@
+******** WIP *************
 1. Command Line Arguments
+
+******** TODO *************
 2. Add tasks
 3. Update tasks
 4. Delete tasks
 5. status
     * todo/in-progress/done
+
+Notes 2-5: Need task class + modify task (running task specific commands) class
+
 6. List tasks
 7. List done tasks
 8. List not done tasks
 9. List in progress tasks
+
+Notes 6-9: Need running listing command specific class
+
 10. Implement JSON w/ following prop:
     * id
     * description
     * status
     * createdAt
     * updatedAt
+
+Notes 10: Need class for Java task class -> JSON 
+
+******** DONE *************
