@@ -2,6 +2,8 @@
 1. Command Line Arguments
 
 ******** TODO *************
+NOTE: TESTS FOR ALL
+
 2. Add tasks
 3. Update tasks
 4. Delete tasks
@@ -15,7 +17,7 @@ Notes 2-5: Need task class + modify task (running task specific commands) class
 8. List not done tasks
 9. List in progress tasks
 
-Notes 6-9: Need running listing command specific class
+Notes 6-9: Need task list class + running listing command specific class
 
 10. Implement JSON w/ following prop:
     * id

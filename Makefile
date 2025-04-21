@@ -12,4 +12,4 @@ tasktracker:
 .PHONY: clean
 
 clean:
-	@rm $(BUILD_DIR)/*.class 2> /dev/null
+	@rm -rf $(BUILD_DIR)/*

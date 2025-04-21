@@ -6,13 +6,17 @@ import java.util.List;
 import java.util.Set;
 import java.lang.String;
 
+import lib.TaskList;
 
-class InputParser {
+
+public class InputParser {
     private final String correctUsage = "Correct Usage:\n" +
-        "tasktracker <command> <command-arg1> <command-arg2> ...\n" +
-        "Use 'tasktracker help' for general help or" + 
+        "\ttasktracker <command> <command-arg1> <command-arg2> ...\n" +
+        "\tUse 'tasktracker help' for general help or" + 
         "'tasktracker <command> help' for command-specific help";
-    private final Set<String> validBaseCommands = new HashSet<>(
+    private final String incorrectCmdUsageFmt = "Incorrect Usage:\n" +
+        "\tInvalid command argument to 'tasktracker %s %s'\n%s";
+    private final Set<String> validBaseCmds = new HashSet<>(
         List.of(
             "add",
             "update",
@@ -21,6 +25,14 @@ class InputParser {
             "mark-done",
             "list"
         ));
+    private final Set<String> validListCmdCmdArgs = new HashSet<>(
+        List.of(
+            "done",
+            "todo",
+            "in-progress"
+        ));
+
+
     private String[] input;
 
 
@@ -31,20 +43,70 @@ class InputParser {
 
     public boolean isValidBaseCommand() {
         if (input.length == 0) {
-            throw new IllegalArgumentException(
+            System.err.println(
                     String.format(
                         "Incorrect usage: No Arguments Found\n%s",
                         correctUsage
                     ));
-        } else if (input[0] == null || !validBaseCommands.contains(input[0])) {
+        } else if (input[0] == null || !validBaseCmds.contains(input[0])) {
             String incorrectCommand = input[0].length() > 10 ? input[0].substring(0, 10) + "..." : input[0];
-            throw new IllegalArgumentException(
+            System.err.println(
                     String.format(
-                        "Incorrect usage: Incorrect Argument '%s'\n%s",
+                        "Incorrect usage: Invalid Argument '%s'\n%s",
                         incorrectCommand,
                         correctUsage
                     ));
+        } else {
+            return true;
         }
-        return true;
+
+        return false;
+    }
+
+    public boolean isValidSubCommand() {
+        if (!isValidBaseCommand()) {
+            return false;
+        }
+
+        switch(input[0]) {
+            case "add":
+                return input.length == 2;
+            case "update":
+                return input.length == 3 && isValidId(input[1]);
+
+            case "delete":
+            case "mark-in-progress":
+            case "mark-done":
+                return input.length == 2 && isValidId(input[1]);
+
+            case "list":
+                if (input.length == 1) {
+                    return true;
+                } else if (input.length == 2) {
+                    return input[1] != null && validListCmdCmdArgs.contains(input[1]);
+                }
+        }
+        return false;
+    }
+
+    public boolean isValidInt(String argument) {
+        Integer idToUpdate = null;
+        try {
+            idToUpdate = Integer.valueOf(argument);
+        } catch (NumberFormatException nfe) {
+            System.err.println(
+                    String.format(
+                        incorrectCmdUsageFmt,
+                        input[0],
+                        argument,
+                        correctUsage
+                    ));
+        }
+        return idToUpdate != null;
+    }
+
+    public boolean isValidId(String argument) {
+        return isValidInt(argument) &&
+               Integer.valueOf(argument).intValue() <= TaskList.getSize();
     }
 }
