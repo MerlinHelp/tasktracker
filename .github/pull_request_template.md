@@ -1,4 +1,4 @@
-[//]: # Credit: UCSD CSE 110 PR Template
+[//]: # (Credit: UCSD CSE 110 PR Template)
 # Abstract
 
 # Issue
