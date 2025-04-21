@@ -1,3 +1,0 @@
-PATH=/usr/bin/java:$PATH
-PATH=/usr/bin/javac:$PATH
-export PATH
