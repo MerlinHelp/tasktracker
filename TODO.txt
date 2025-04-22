@@ -17,7 +17,7 @@ Notes 2-5: Need task class + modify task (running task specific commands) class
 8. List not done tasks
 9. List in progress tasks
 
-Notes 6-9: Need task list class + running listing command specific class
+Notes 6-9: running listing command specific class
 
 10. Implement JSON w/ following prop:
     * id
