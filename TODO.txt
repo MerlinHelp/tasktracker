@@ -14,20 +14,11 @@ Notes 2-5: Need task class + modify task (running task specific commands) class
 
 6. List tasks
 7. List done tasks
-8. List todo tasks
+8. List not done tasks
 9. List in progress tasks
-<<<<<<< Updated upstream
 
 Notes 6-9: Need task list class + running listing command specific class
 
-=======
-<<<<<<< Updated upstream
-=======
-
-Notes 6-9: running listing command specific class
-
->>>>>>> Stashed changes
->>>>>>> Stashed changes
 10. Implement JSON w/ following prop:
     * id
     * description
