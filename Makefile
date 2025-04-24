@@ -14,7 +14,7 @@ $(BUILD_DIR)/%.class: %.java
 
 tasktracker: $(JAVA_CLASSES)
 
-jar: 
+jar: tasktracker
 	jar -cfe tasktracker.jar src.main.TaskTracker build/src/main/TaskTracker.class -C build src
 	@mv tasktracker.jar dist/
 

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 COMMAND_NAME="tasktracker"
-JAR_PATH="${1:-/dist/tasktracker.jar}"
+JAR_PATH="${1:-./dist/tasktracker.jar}"
 JAR_LIB_DIR="$HOME/.local/lib/$COMMAND_NAME"
 BIN_PATH="$HOME/.local/bin"
 
