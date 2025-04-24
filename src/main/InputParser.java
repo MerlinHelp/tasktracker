@@ -1,4 +1,4 @@
-package main;
+package src.main;
 
 
 import java.util.HashSet;
@@ -6,13 +6,13 @@ import java.util.List;
 import java.util.Set;
 import java.lang.String;
 
-import lib.TaskList;
+import src.lib.TaskList;
 
 
 public class InputParser {
     private final String correctUsage = "Correct Usage:\n" +
         "\ttasktracker <command> <command-arg1> <command-arg2> ...\n" +
-        "\tUse 'tasktracker help' for general help or" + 
+        "\tUse 'tasktracker help' for general help or " + 
         "'tasktracker <command> help' for command-specific help";
     private final String incorrectCmdUsageFmt = "Incorrect Usage:\n" +
         "\tInvalid command argument to 'tasktracker %s %s'\n%s";

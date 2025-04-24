@@ -1,4 +1,4 @@
-package lib;
+package src.lib;
 
 
 // For now, dummy class
