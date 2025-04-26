@@ -1,3 +1,9 @@
+******* NOTES ************
+DONT FORGET
+    * make task 1-indexed from java to json,
+    * make task 0-indexed from json to java
+
+
 ******** WIP *************
 1. Command Line Arguments
 

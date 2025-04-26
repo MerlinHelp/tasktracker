@@ -107,6 +107,6 @@ public class InputParser {
 
     public boolean isValidId(String argument) {
         return isValidInt(argument) &&
-               Integer.valueOf(argument).intValue() <= TaskList.getSize();
+               Integer.valueOf(argument).intValue() <= 10;
     }
 }
