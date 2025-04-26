@@ -2,6 +2,7 @@ package src.lib;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import src.lib.Task;
 
@@ -13,12 +14,26 @@ public class TaskList {
         tasks = new ArrayList<>();
     }
 
-    public int getSize() {
+    public int size() {
         return tasks.size();
     }
 
     public void addTask(Task task) {
+        task.updateId(size());
         tasks.add(task);
+    }
+
+    // TODO: Get LocalDateTime.nano()
+    public void addTaskWithDescription(String description) {
+        Task newTask = new Task(size(), Task.Status.TODO, description, 0, 0);
+    }
+
+    public void updateTaskIds() {
+        IntStream.range(0, size())
+            .forEach(idx -> {
+                Task currTask = tasks.get(idx);
+                currTask.updateId(idx);
+            });
     }
 
     public void updateTask(int id, String newDescription) {
@@ -52,9 +67,9 @@ public class TaskList {
     @Override
     public String toString() {
         String taskList = "";
-        for (int i = 0; i < tasks.size(); ++i) {
-            taskList += tasks.get(i);
+        for (int i = 0; i < tasks.size() - 1; ++i) {
+            taskList += tasks.get(i) + "\n";
         }
-        return taskList;
+        return taskList + tasks.get(tasks.size() - 1);
     }
 }

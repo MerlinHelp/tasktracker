@@ -3,15 +3,17 @@ package src.lib;
 import java.util.HashMap;
 import java.util.Map;
 
+import src.lib.time.JavaTime;
+
 public class Task {
     private int id;
     private Status status;
     private String description;
     private int createdAt;
     private int updatedAt;
-    private final String taskFormatString = "%-11s [ID: %d]: %s%n";
+    private final String taskFormatString = "%-11s [ID: %d]: %s";
 
-    enum Status {
+    public enum Status {
         TODO,
         INPROGRESS,
         DONE
@@ -36,8 +38,9 @@ public class Task {
         this.updatedAt = updatedAt;
     }
 
+    // We need observers badly. Need to update updatedAt on any other update.
     public static Task createEmpty() {
-        return new Task(-1, Status.TODO, "", 0, 0);
+        return new Task(-1, Task.Status.TODO, "", 0, 0);
     }
 
     public void updateId(int newId) {
@@ -50,6 +53,10 @@ public class Task {
 
     public void updateDescription(String newDescription) {
         this.description = newDescription;
+    }
+
+    public void updateTime(int newTime) {
+        this.updatedAt = newTime;
     }
 
     @Override

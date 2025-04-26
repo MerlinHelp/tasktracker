@@ -64,10 +64,6 @@ public class InputParser {
     }
 
     public boolean isValidSubCommand() {
-        if (!isValidBaseCommand()) {
-            return false;
-        }
-
         switch(input[0]) {
             case "add":
                 return input.length == 2;
