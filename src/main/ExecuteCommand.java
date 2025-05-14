@@ -1,7 +1,11 @@
 package src.main;
 
-import src.lib.TaskList;
-import src.lib.Task;
+import static src.lib.main.Task.Status;
+
+import src.lib.main.TaskList;
+import src.lib.main.Task;
+
+
 
 public class ExecuteCommand {
 
@@ -23,28 +27,28 @@ public class ExecuteCommand {
                 break;
             case "add":
                 Task newTask = Task.createEmpty();
-                newTask.updateDescription(args[1]);
+                newTask.setDescription(args[1]);
                 taskList.addTask(newTask);
                 break;
             case "list":
                 runListCommand(args.length == 2 ? args[1] : null);
                 break;
         }
-
     }
+
     public void modifyTask(Task task, String args[]) {
         switch (args[0]) {
             case "update":
-                task.updateDescription(args[2]);
+                task.setDescription(args[2]);
                 break;
             case "delete":
                 taskList.deleteTask(Integer.valueOf(args[1]));
                 break;
             case "mark-in-progress":
-                task.updateStatus(Task.Status.INPROGRESS);
+                task.setStatus(Status.INPROGRESS);
                 break;
             case "mark-done":
-                task.updateStatus(Task.Status.DONE);
+                task.setStatus(Status.DONE);
                 break;
         }
     }

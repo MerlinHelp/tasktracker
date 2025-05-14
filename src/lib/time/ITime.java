@@ -1,5 +1,5 @@
 package src.lib.time;
 
 public interface ITime {
-    public abstract String getCurrentTime();
+    public abstract int getCurrentTime();
 }

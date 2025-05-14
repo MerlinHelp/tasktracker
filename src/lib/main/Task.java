@@ -1,4 +1,4 @@
-package src.lib;
+package src.lib.main;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,10 +20,11 @@ public class Task {
     }
 
     private static HashMap<Status, String> statusToString = new HashMap<>(
-            Map.of(Status.TODO, "TODO",
-                   Status.INPROGRESS, "INPROGRESS",
-                   Status.DONE, "DONE"
-                ));
+        Map.of(
+            Status.TODO, "TODO",
+            Status.INPROGRESS, "INPROGRESS",
+            Status.DONE, "DONE"
+        ));
                    
 
     public Task(int id,
@@ -40,22 +41,40 @@ public class Task {
 
     // We need observers badly. Need to update updatedAt on any other update.
     public static Task createEmpty() {
-        return new Task(-1, Task.Status.TODO, "", 0, 0);
+        return new Task(-1, Task.Status.TODO, "", 0, -1);
     }
 
-    public void updateId(int newId) {
+    // Getters
+    public int getId() {
+        return id;
+    }
+    public String getDescription() {
+        return description;
+    }
+    public Task.Status getStatus() {
+        return status;
+    }
+    public int getCreatedAt() {
+        return createdAt;
+    }
+    public int getUpdatedAt() {
+        return updatedAt;
+    }
+
+    // Setters
+    public void setId(int newId) {
         this.id = newId;
     }
     
-    public void updateStatus(Status newStatus) {
+    public void setStatus(Status newStatus) {
         this.status = newStatus;
     }
 
-    public void updateDescription(String newDescription) {
+    public void setDescription(String newDescription) {
         this.description = newDescription;
     }
 
-    public void updateTime(int newTime) {
+    public void setUpdatedAtTime(int newTime) {
         this.updatedAt = newTime;
     }
 

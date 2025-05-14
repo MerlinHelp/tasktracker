@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Set;
 import java.lang.String;
 
-import src.lib.TaskList;
+import src.lib.main.TaskList;
 
 
 public class InputParser {

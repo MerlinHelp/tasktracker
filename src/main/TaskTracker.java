@@ -1,12 +1,17 @@
 package src.main;
 
-import src.lib.TaskList;
-import src.lib.Task;
+import src.lib.main.TaskList;
+import src.lib.main.Task;
+import src.lib.test.unit.TaskTests;
 import src.main.ExecuteCommand;
 import src.main.InputParser;
 
 public class TaskTracker {
     public static void main(String args[]) {
+        TaskTests tests = new TaskTests();
+        tests.runAllTests();
+
+
         InputParser inputParser = new InputParser(args);
         if (!(inputParser.isValidBaseCommand() && inputParser.isValidSubCommand())) {
             System.exit(-1);

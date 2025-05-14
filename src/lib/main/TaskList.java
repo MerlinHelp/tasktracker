@@ -1,10 +1,10 @@
-package src.lib;
+package src.lib.main;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
-import src.lib.Task;
+import src.lib.main.Task;
 
 // For now, dummy class
 public class TaskList {
@@ -19,7 +19,7 @@ public class TaskList {
     }
 
     public void addTask(Task task) {
-        task.updateId(size());
+        task.setId(size());
         tasks.add(task);
     }
 
@@ -28,18 +28,18 @@ public class TaskList {
         Task newTask = new Task(size(), Task.Status.TODO, description, 0, 0);
     }
 
-    public void updateTaskIds() {
+    public void setTaskIds() {
         IntStream.range(0, size())
             .forEach(idx -> {
                 Task currTask = tasks.get(idx);
-                currTask.updateId(idx);
+                currTask.setId(idx);
             });
     }
 
-    public void updateTask(int id, String newDescription) {
+    public void setTask(int id, String newDescription) {
         Task currTask;
         if ((currTask = getTaskById(id)) != null) {
-            currTask.updateDescription(newDescription);
+            currTask.setDescription(newDescription);
         }
     }
 
@@ -60,7 +60,7 @@ public class TaskList {
     public void changeStatus(int id, Task.Status newStatus) {
         Task currTask;
         if ((currTask = getTaskById(id)) != null) {
-            currTask.updateStatus(newStatus);
+            currTask.setStatus(newStatus);
         }
     }
 
