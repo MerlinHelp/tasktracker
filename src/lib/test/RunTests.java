@@ -7,5 +7,7 @@ public class RunTests {
          TaskTests taskTests = new TaskTests();
 
          taskTests.runAllTests();
+
+         System.out.println("Tests have all passed!");
     }
 }
