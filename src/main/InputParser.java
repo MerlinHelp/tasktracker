@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Set;
 import java.lang.String;
 
-import src.lib.TaskList;
+import src.lib.main.TaskList;
 
 
 public class InputParser {
@@ -64,10 +64,6 @@ public class InputParser {
     }
 
     public boolean isValidSubCommand() {
-        if (!isValidBaseCommand()) {
-            return false;
-        }
-
         switch(input[0]) {
             case "add":
                 return input.length == 2;
