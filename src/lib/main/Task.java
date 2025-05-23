@@ -48,15 +48,23 @@ public class Task {
     public int getId() {
         return id;
     }
-    public String getDescription() {
-        return description;
-    }
+
     public Task.Status getStatus() {
         return status;
     }
+
+    public String getStatusString() {
+        return statusToString.get(status);
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
     public int getCreatedAt() {
         return createdAt;
     }
+
     public int getUpdatedAt() {
         return updatedAt;
     }
