@@ -28,11 +28,14 @@ public class TaskList {
     // TODO: Get LocalDateTime.nano()
     public void addTaskWithDescription(String description) {
         Task newTask = new Task(size(), Task.Status.TODO, description, 0, 0);
+        tasks.add(newTask);
     }
 
 
     public Task[] getTasks() {
-        return (Task[]) this.tasks.toArray();
+        Task[] tasks = this.tasks.toArray(new Task[this.tasks.size()]);
+        System.out.println(tasks[0]);
+        return tasks;
     }
 
     public List<Task> filterByStatus(Task.Status status) {

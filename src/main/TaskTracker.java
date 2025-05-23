@@ -19,8 +19,10 @@ public class TaskTracker {
         }
 
         TaskList taskList = new TaskList();
+        taskList.addTask(Task.createEmpty());
+        taskList.addTaskWithDescription("Make breakfast");
 
-        JSONWriter.writeToJSON("Hello");
+        JSONWriter.writeTaskListToJSON(taskList);
     }
 
     public static void executeCommand(TaskList taskList, String[] args) {
