@@ -23,6 +23,12 @@ public class TaskTracker {
         taskList.addTask(t1);
         taskList.addTask(t2);
 
+        t1.setId(2);
+        t1.setDescription("Make breakfast");
+        t2.setStatus(Task.Status.DONE);
+
+        taskList.setTaskIds();
+
         ExecuteCommand exec = new ExecuteCommand(taskList);
         exec.execute(args);
     }

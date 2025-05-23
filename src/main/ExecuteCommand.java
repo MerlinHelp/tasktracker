@@ -5,6 +5,9 @@ import static src.lib.main.Task.Status;
 import src.lib.main.TaskList;
 import src.lib.main.Task;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 
 public class ExecuteCommand {
@@ -56,11 +59,24 @@ public class ExecuteCommand {
 
     public void runListCommand(String subcommand) {
         String printString = "";
+        List<Task> printList = null;
         switch (subcommand) {
             case null:
                 printString = taskList.toString();
                 break;
+            case "done":
+                printList = taskList.filterByStatus(Status.DONE);
+                break;
+            case "todo":
+                printList = taskList.filterByStatus(Status.TODO);
+                break;
+            case "in-progress":
+                printList = taskList.filterByStatus(Status.INPROGRESS);
+                break;
             default:
+        }
+        if (printList != null && !printList.isEmpty()) {
+            printString = TaskList.printGivenTasks(printList);
         }
         System.out.println(printString);
     }

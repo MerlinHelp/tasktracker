@@ -3,6 +3,8 @@ package src.lib.main;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
+import java.util.stream.Collectors;
 
 import src.lib.main.Task;
 
@@ -26,6 +28,18 @@ public class TaskList {
     // TODO: Get LocalDateTime.nano()
     public void addTaskWithDescription(String description) {
         Task newTask = new Task(size(), Task.Status.TODO, description, 0, 0);
+    }
+
+
+    public Task[] getTasks() {
+        return (Task[]) this.tasks.toArray();
+    }
+
+    public List<Task> filterByStatus(Task.Status status) {
+        return tasks
+            .stream()
+            .filter(t -> t.getStatus() == status)
+            .collect(Collectors.toList());
     }
 
     public void setTaskIds() {
@@ -64,12 +78,18 @@ public class TaskList {
         }
     }
 
-    @Override
-    public String toString() {
+
+    public static String printGivenTasks(List<Task> tasks) {
         String taskList = "";
         for (int i = 0; i < tasks.size() - 1; ++i) {
             taskList += tasks.get(i) + "\n";
         }
         return taskList + tasks.get(tasks.size() - 1);
+    }
+
+
+    @Override
+    public String toString() {
+        return TaskList.printGivenTasks(this.tasks);
     }
 }
