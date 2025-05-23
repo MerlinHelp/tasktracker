@@ -13,7 +13,7 @@ public class JSONStringBuilder {
             formatter.format("\"%s\": %d".indent(TABSPACES * (currIndent + 1)), key, val);
     }
     public static void formatEntry(Formatter formatter, String key, String val) {
-            formatter.format("\"%s\": %s".indent(TABSPACES * (currIndent + 1)), key, val);
+            formatter.format("\"%s\": \"%s\"".indent(TABSPACES * (currIndent + 1)), key, val);
     }
 
     public static String taskToJSON(Task task) {

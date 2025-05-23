@@ -2,6 +2,7 @@ package src.main;
 
 import src.lib.main.TaskList;
 import src.lib.main.Task;
+import src.lib.main.json.JSONParser;
 import src.lib.main.json.JSONWriter;
 import src.lib.test.unit.TaskTests;
 import src.main.ExecuteCommand;
@@ -23,6 +24,7 @@ public class TaskTracker {
         taskList.addTaskWithDescription("Make breakfast");
 
         JSONWriter.writeTaskListToJSON(taskList);
+        JSONParser.jsonToTaskList();
     }
 
     public static void executeCommand(TaskList taskList, String[] args) {

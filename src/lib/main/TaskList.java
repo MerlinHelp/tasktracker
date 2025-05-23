@@ -34,7 +34,6 @@ public class TaskList {
 
     public Task[] getTasks() {
         Task[] tasks = this.tasks.toArray(new Task[this.tasks.size()]);
-        System.out.println(tasks[0]);
         return tasks;
     }
 
