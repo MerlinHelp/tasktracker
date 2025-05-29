@@ -25,6 +25,12 @@ public class Task {
             Status.INPROGRESS, "INPROGRESS",
             Status.DONE, "DONE"
         ));
+    private static HashMap<String, Status> stringToStatus = new HashMap<>(
+        Map.of(
+           "TODO", Status.TODO,
+           "INPROGRESS", Status.INPROGRESS,
+           "DONE", Status.DONE
+        ));
                    
 
     public Task(int id,
@@ -34,7 +40,10 @@ public class Task {
                 int updatedAt) {
         this.id = id;
         this.status = status;
+
+        if (description.contains("\"")) throw new IllegalArgumentException();
         this.description = description;
+
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
@@ -42,6 +51,10 @@ public class Task {
     // We need observers badly. Need to update updatedAt on any other update.
     public static Task createEmpty() {
         return new Task(-1, Task.Status.TODO, "", 0, -1);
+    }
+
+    public static Status getStatusFromString(String status) {
+        return stringToStatus.get(status);
     }
 
     // Getters
@@ -56,6 +69,7 @@ public class Task {
     public String getStatusString() {
         return statusToString.get(status);
     }
+
 
     public String getDescription() {
         return description;
@@ -79,6 +93,7 @@ public class Task {
     }
 
     public void setDescription(String newDescription) {
+        assert newDescription != null && !newDescription.contains("\""); 
         this.description = newDescription;
     }
 
