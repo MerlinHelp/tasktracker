@@ -1,6 +1,7 @@
 package src.lib.main.json;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,14 +29,15 @@ public class JSONParser {
 
             jsonString = sb.toString();
         } catch (IOException e) {
-            System.out.println(e.getMessage());
         }
         return jsonString;
     }
 
     public static TaskList jsonToTaskList() {
+        TaskList ret = new TaskList();
+
         String jsonString = getJSONString();
-        if (jsonString.isEmpty()) return null;
+        if (jsonString.isEmpty()) return ret;
 
         String tasks = jsonString.substring(
                 jsonString.indexOf("[") + 2,
@@ -45,16 +47,13 @@ public class JSONParser {
 
         String[] taskArr = tasks.split("[{}]", -1);
 
-        TaskList ret = new TaskList();
         // Splitting tasks creates blanks every match
         try {
             for (int i = 1; i < taskArr.length; i += 2) {
                 String currTask = taskArr[i];
 
-                System.out.println(currTask);
-
                 Object[] idInfo = jsonIntToJavaString(currTask, 0, "id");
-                int id = ((Integer) idInfo[0]).intValue();
+                int id = ((Integer) idInfo[0]).intValue() - 1;
 
                 Object[] statusInfo = jsonStringToJavaString(currTask, (Integer) idInfo[1], "status");
                 String status = (String) statusInfo[0];
@@ -69,7 +68,7 @@ public class JSONParser {
                 int updatedAt = ((Integer) updatedAtInfo[0]).intValue();
 
                 Task taskRead = new Task(id, Task.getStatusFromString(status), description, createdAt, updatedAt);
-                System.out.println(taskRead);
+                ret.addTask(taskRead);
             }
         } catch(Exception e) {
             throw(e);

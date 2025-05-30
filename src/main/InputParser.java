@@ -43,19 +43,17 @@ public class InputParser {
 
     public boolean isValidBaseCommand() {
         if (input.length == 0) {
-            System.err.println(
-                    String.format(
-                        "Incorrect usage: No Arguments Found\n%s",
-                        correctUsage
-                    ));
+            System.err.printf(
+                "Incorrect usage: No Arguments Found\n%s",
+                correctUsage
+            );
         } else if (input[0] == null || !validBaseCmds.contains(input[0])) {
             String incorrectCommand = input[0].length() > 10 ? input[0].substring(0, 10) + "..." : input[0];
-            System.err.println(
-                    String.format(
-                        "Incorrect usage: Invalid Argument '%s'\n%s",
-                        incorrectCommand,
-                        correctUsage
-                    ));
+            System.err.printf(
+                "Incorrect usage: Invalid Argument '%s'\n%s",
+                incorrectCommand,
+                correctUsage
+            );
         } else {
             return true;
         }
@@ -90,13 +88,12 @@ public class InputParser {
         try {
             idToUpdate = Integer.valueOf(argument);
         } catch (NumberFormatException nfe) {
-            System.err.println(
-                    String.format(
-                        incorrectCmdUsageFmt,
-                        input[0],
-                        argument,
-                        correctUsage
-                    ));
+            System.err.printf(
+                incorrectCmdUsageFmt,
+                input[0],
+                argument,
+                correctUsage
+            );
         }
         return idToUpdate != null;
     }

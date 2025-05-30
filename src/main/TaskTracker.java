@@ -19,12 +19,13 @@ public class TaskTracker {
             System.exit(-1);
         }
 
-        TaskList taskList = new TaskList();
-        taskList.addTask(Task.createEmpty());
-        taskList.addTaskWithDescription("Make breakfast");
+        //TaskList tasksToWrite = new TaskList();
+        //tasksToWrite.addTask(Task.createEmpty());
+        //tasksToWrite.addTaskWithDescription("Facts breakfast");
+        //JSONWriter.writeTaskListToJSON(tasksToWrite);
 
-        JSONWriter.writeTaskListToJSON(taskList);
-        JSONParser.jsonToTaskList();
+        TaskList currTasks = JSONParser.jsonToTaskList();
+        executeCommand(currTasks, args);
     }
 
     public static void executeCommand(TaskList taskList, String[] args) {

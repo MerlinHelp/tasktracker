@@ -20,7 +20,7 @@ public class JSONStringBuilder {
         StringBuilder sb = new StringBuilder();
         Formatter formatter = new Formatter(sb);
 
-        formatEntry(formatter, "id", task.getId());
+        formatEntry(formatter, "id", task.getId() + 1);
         formatEntry(formatter, "status", task.getStatusString());
         formatEntry(formatter, "description", task.getDescription());
         formatEntry(formatter, "createdAt", task.getCreatedAt());
