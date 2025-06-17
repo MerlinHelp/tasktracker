@@ -49,7 +49,7 @@ public class ExecuteCommand {
                 task.setDescription(args[2]);
                 break;
             case "delete":
-                taskList.deleteTask(Integer.valueOf(args[1]));
+                taskList.deleteTask(Integer.valueOf(args[1]) - 1);
                 break;
             case "mark-in-progress":
                 task.setStatus(Status.INPROGRESS);
