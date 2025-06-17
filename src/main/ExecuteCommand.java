@@ -3,6 +3,8 @@ package src.main;
 import static src.lib.main.Task.Status;
 
 import src.lib.main.TaskList;
+import src.lib.main.json.JSONParser;
+import src.lib.main.json.JSONWriter;
 import src.lib.main.Task;
 
 import java.util.ArrayList;
@@ -18,25 +20,27 @@ public class ExecuteCommand {
         this.taskList = taskList;
     }
 
+    // TODO: Give error message when modifying a task that does not exist
     public void execute(String[] args) {
         switch (args[0]) {
             case "update":
             case "delete":
             case "mark-in-progress":
             case "mark-done":
-                Integer taskId = Integer.valueOf(args[1]);
+                Integer taskId = Integer.valueOf(args[1]).intValue() - 1;
                 Task currTask = taskList.getTaskById(taskId);
+                if (currTask == null) System.exit(-1);
                 modifyTask(currTask, args);
                 break;
             case "add":
-                Task newTask = Task.createEmpty();
-                newTask.setDescription(args[1]);
-                taskList.addTask(newTask);
+                taskList.addTaskWithDescription(args[1]);
                 break;
             case "list":
                 runListCommand(args.length == 2 ? args[1] : null);
-                break;
+                return;
         }
+
+        JSONWriter.writeTaskListToJSON(taskList);
     }
 
     public void modifyTask(Task task, String args[]) {
@@ -45,7 +49,7 @@ public class ExecuteCommand {
                 task.setDescription(args[2]);
                 break;
             case "delete":
-                taskList.deleteTask(Integer.valueOf(args[1]));
+                taskList.deleteTask(Integer.valueOf(args[1]) - 1);
                 break;
             case "mark-in-progress":
                 task.setStatus(Status.INPROGRESS);
@@ -62,7 +66,7 @@ public class ExecuteCommand {
         List<Task> printList = null;
         switch (subcommand) {
             case null:
-                printString = taskList.toString();
+                printList = taskList.getTasksList();
                 break;
             case "done":
                 printList = taskList.filterByStatus(Status.DONE);
@@ -76,7 +80,7 @@ public class ExecuteCommand {
             default:
         }
         if (printList != null && !printList.isEmpty()) {
-            printString = TaskList.printGivenTasks(printList);
+            printString = TaskList.getTaskListString(printList);
         }
         System.out.println(printString);
     }

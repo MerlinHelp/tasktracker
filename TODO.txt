@@ -5,33 +5,36 @@ DONT FORGET
 
 
 ******** WIP *************
-1. Command Line Arguments
+2. Add tasks
+3. Update tasks
+10. Implement JSON w/ following prop:
+* id
+* description
+* status
+* createdAt
+* updatedAt
 
 ******** TODO *************
 NOTE: TESTS FOR ALL
 
-2. Add tasks
-3. Update tasks
 4. Delete tasks
+
+Notes 2-5: Need task class + modify task (running task specific commands) class
+
+
+Notes 10: Need class for Java task class -> JSON 
+Notes 11: adding !! even in "" allows for bash expansion of prev cmd
+11. Add a readme for instructions. 
+
+******** DONE *************
+1. Command Line Arguments
+
 5. status
     * todo/in-progress/done
 
-Notes 2-5: Need task class + modify task (running task specific commands) class
+Notes 6-9: running listing command specific class
 
 6. List tasks
 7. List done tasks
 8. List not done tasks
 9. List in progress tasks
-
-Notes 6-9: running listing command specific class
-
-10. Implement JSON w/ following prop:
-    * id
-    * description
-    * status
-    * createdAt
-    * updatedAt
-
-Notes 10: Need class for Java task class -> JSON 
-
-******** DONE *************

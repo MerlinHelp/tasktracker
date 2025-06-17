@@ -23,17 +23,23 @@ public class TaskList {
     public void addTask(Task task) {
         task.setId(size());
         tasks.add(task);
+        setTaskIds();
     }
 
     // TODO: Get LocalDateTime.nano()
     public void addTaskWithDescription(String description) {
         Task newTask = new Task(size(), Task.Status.TODO, description, 0, 0);
         tasks.add(newTask);
+        setTaskIds();
     }
 
 
     public Task[] getTasks() {
         Task[] tasks = this.tasks.toArray(new Task[this.tasks.size()]);
+        return tasks;
+    }
+
+    public List<Task> getTasksList() {
         return tasks;
     }
 
@@ -52,7 +58,7 @@ public class TaskList {
             });
     }
 
-    public void setTask(int id, String newDescription) {
+    public void updateTaskDescription(int id, String newDescription) {
         Task currTask;
         if ((currTask = getTaskById(id)) != null) {
             currTask.setDescription(newDescription);
@@ -81,17 +87,26 @@ public class TaskList {
     }
 
 
-    public static String printGivenTasks(List<Task> tasks) {
+    public static String getTaskListString(List<Task> tasks) {
         String taskList = "";
         for (int i = 0; i < tasks.size() - 1; ++i) {
-            taskList += tasks.get(i) + "\n";
+            Task currTask = tasks.get(i);
+            currTask.setId(i + 1);
+            taskList += currTask + "\n";
+            currTask.setId(i);
         }
-        return taskList + tasks.get(tasks.size() - 1);
+
+        Task lastTask = tasks.get(tasks.size() - 1);
+        lastTask.setId(tasks.size());
+        taskList += lastTask;
+        lastTask.setId(tasks.size() - 1);
+
+        return taskList;
     }
 
 
     @Override
     public String toString() {
-        return TaskList.printGivenTasks(this.tasks);
+        return TaskList.getTaskListString(this.tasks);
     }
 }
