@@ -6,6 +6,7 @@ import src.lib.main.TaskList;
 import src.lib.main.json.JSONParser;
 import src.lib.main.json.JSONWriter;
 import src.lib.main.Task;
+import src.lib.time.JavaTime;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,9 +16,11 @@ import java.util.List;
 public class ExecuteCommand {
 
     private TaskList taskList;
+    private JavaTime javaTime;
 
     public ExecuteCommand(TaskList taskList) {
         this.taskList = taskList;
+        this.javaTime = new JavaTime();
     }
 
     // TODO: Give error message when modifying a task that does not exist
@@ -34,6 +37,7 @@ public class ExecuteCommand {
                 break;
             case "add":
                 taskList.addTaskWithDescription(args[1].strip());
+                taskList.getTaskById(taskList.size() - 1).setCreatedAtTime(javaTime.getCurrentTime());
                 break;
             case "list":
                 runListCommand(args.length == 2 ? args[1] : null);
@@ -47,6 +51,7 @@ public class ExecuteCommand {
         switch (args[0]) {
             case "update":
                 task.setDescription(args[2].strip());
+                task.setUpdatedAtTime(javaTime.getCurrentTime());
                 break;
             case "delete":
                 taskList.deleteTask(task.getId());

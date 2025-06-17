@@ -12,7 +12,7 @@ public class JavaTime implements ITime {
     // TODO: Change current time format depending on STYLE chosen
     @Override
     public int getCurrentTime() {
-        return LocalDateTime.now().getNano();
+        return getCurrentTimeNanoSeconds();
     }
 
     public int getCurrentTimeNanoSeconds() {

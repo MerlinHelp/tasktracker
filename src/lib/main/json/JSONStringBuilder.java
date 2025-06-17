@@ -45,7 +45,7 @@ public class JSONStringBuilder {
         }
 
         formatter.format("]".indent(TABSPACES * --currIndent));
-        formatter.format("}");
+        formatter.format("}\n");
 
         formatter.flush();
         return sb.toString();
