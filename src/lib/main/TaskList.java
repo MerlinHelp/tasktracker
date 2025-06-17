@@ -89,17 +89,12 @@ public class TaskList {
 
     public static String getTaskListString(List<Task> tasks) {
         String taskList = "";
-        for (int i = 0; i < tasks.size() - 1; ++i) {
+        for (int i = 0; i < tasks.size(); ++i) {
             Task currTask = tasks.get(i);
             currTask.setId(i + 1);
             taskList += currTask + "\n";
             currTask.setId(i);
         }
-
-        Task lastTask = tasks.get(tasks.size() - 1);
-        lastTask.setId(tasks.size());
-        taskList += lastTask;
-        lastTask.setId(tasks.size() - 1);
 
         return taskList;
     }

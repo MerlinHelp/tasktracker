@@ -33,7 +33,7 @@ public class ExecuteCommand {
                 modifyTask(currTask, args);
                 break;
             case "add":
-                taskList.addTaskWithDescription(args[1]);
+                taskList.addTaskWithDescription(args[1].strip());
                 break;
             case "list":
                 runListCommand(args.length == 2 ? args[1] : null);
@@ -46,10 +46,10 @@ public class ExecuteCommand {
     public void modifyTask(Task task, String args[]) {
         switch (args[0]) {
             case "update":
-                task.setDescription(args[2]);
+                task.setDescription(args[2].strip());
                 break;
             case "delete":
-                taskList.deleteTask(Integer.valueOf(args[1]) - 1);
+                taskList.deleteTask(task.getId());
                 break;
             case "mark-in-progress":
                 task.setStatus(Status.INPROGRESS);
@@ -82,6 +82,6 @@ public class ExecuteCommand {
         if (printList != null && !printList.isEmpty()) {
             printString = TaskList.getTaskListString(printList);
         }
-        System.out.println(printString);
+        System.out.print(printString);
     }
 }
