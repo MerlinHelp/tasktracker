@@ -13,9 +13,9 @@ public class InputParser {
     private final String correctUsage = "Correct Usage:\n" +
         "\ttasktracker <command> <command-arg1> <command-arg2> ...\n" +
         "\tUse 'tasktracker help' for general help or " + 
-        "'tasktracker <command> help' for command-specific help";
+        "'tasktracker <command> help' for command-specific help\n";
     private final String incorrectCmdUsageFmt = "Incorrect Usage:\n" +
-        "\tInvalid command argument to 'tasktracker %s %s'\n%s";
+        "\tInvalid command argument to 'tasktracker %s %s'\n%s\n";
     private final Set<String> validBaseCmds = new HashSet<>(
         List.of(
             "add",
