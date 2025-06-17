@@ -97,6 +97,10 @@ public class Task {
         this.description = newDescription;
     }
 
+    public void setCreatedAtTime(int newTime) {
+        this.createdAt = newTime;
+    }
+
     public void setUpdatedAtTime(int newTime) {
         this.updatedAt = newTime;
     }
